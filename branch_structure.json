@@ -1,0 +1,15 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "fix/screenshot-error-handling",
+    "main"
+  ],
+  "parent": {
+    "fix/screenshot-error-handling": "main",
+    "main": null
+  },
+  "order": [
+    "main",
+    "fix/screenshot-error-handling"
+  ]
+}
