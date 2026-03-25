@@ -5,8 +5,8 @@
   "description": "Natively is a meeting notes app that uses AI to generate notes from your meetings.",
   "scripts": {
     "clean": "rimraf dist dist-electron",
-    "dev": "vite",
-    "build": "npm run clean && tsc && vite build",
+    "dev": "node api.js && vite",
+    "build": "node api.js && npm run clean && tsc && vite build",
     "build:electron": "tsc -p electron/tsconfig.json",
     "preview": "vite preview",
     "postinstall": "cross-env SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm rebuild sharp && node scripts/download-models.js && node scripts/ensure-sqlite-vec.js",
@@ -15,11 +15,12 @@
     "app:dev": "concurrently \"npm run dev -- --port 5180 --strictPort\" \"wait-on http://localhost:5180 && npm run electron:dev\"",
     "app:build": "npm run build && npm run build:electron && cross-env NATIVELY_BUILD_ALL_MAC_ARCHES=1 npm run build:native && electron-builder",
     "watch": "tsc -p electron/tsconfig.json --watch",
-    "start": "npm run app:dev",
+    "start": "node api.js && npm run app:dev",
     "dist": "npm run app:build",
     "build:native": "node scripts/build-native.js"
   },
   "build": {
+    "generateUpdatesFilesForAllChannels": true,
     "appId": "com.electron.meeting-notes",
     "afterPack": "./scripts/ad-hoc-sign.js",
     "productName": "Natively",
@@ -118,7 +119,8 @@
       "oneClick": false,
       "perMachine": false,
       "allowToChangeInstallationDirectory": true,
-      "deleteAppDataOnUninstall": false
+      "deleteAppDataOnUninstall": false,
+      "artifactName": "${productName}-Setup-${version}.${ext}"
     },
     "publish": [
       {
@@ -155,7 +157,7 @@
     "cross-env": "^7.0.3",
     "dotenv": "^17.3.1",
     "electron": "^33.2.0",
-    "electron-builder": "^25.1.8",
+    "electron-builder": "^26.8.1",
     "electron-is-dev": "^3.0.1",
     "electron-rebuild": "^3.2.9",
     "postcss": "^8.4.49",
