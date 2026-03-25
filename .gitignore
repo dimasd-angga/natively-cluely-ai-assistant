@@ -186,3 +186,6 @@ opencode.json
 # Temporary working files
 temp/
 planning/live-negotiation/temp/
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
