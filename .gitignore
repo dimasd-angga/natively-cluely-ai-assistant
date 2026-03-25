@@ -83,14 +83,13 @@ web_modules/
 .yarn-integrity
 
 # dotenv environment variable files
-.env
 .env.development.local
 .env.test.local
 .env.production.local
-.env.local
 
 evinresume.pdf
 TPA Campus JD - SalesCode.pdf
+temp_auto_push.bat
 
 
 # parcel-bundler cache (https://parceljs.org/)
@@ -140,7 +139,6 @@ dist
 .tern-port
 
 # Stores VSCode versions used for testing VSCode extensions
-.vscode-test
 
 # yarn v2
 .yarn/cache
@@ -186,3 +184,6 @@ opencode.json
 # Temporary working files
 temp/
 planning/live-negotiation/temp/
+.gitignore
+branch_structure.json
+config.bat
